@@ -1,5 +1,7 @@
 import { Item } from "@/components/ui/item";
 import type { Task } from "../models/Task";
+import { TrashIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface TaskListProps {
   tasks: Task[];
@@ -16,16 +18,29 @@ const TaskList = ({ tasks, onDelete, onComplete }: TaskListProps) => {
     <div className="flex flex-col gap-2">
       {tasks.map((task) => {
         return (
-          <Item key={task.id} variant="outline">
-            <input
-              type="checkbox"
-              checked={task.isCompleted}
-              onChange={() => {
-                onComplete(task.id);
-              }}
-            />
-            <p>{task.description}</p>
-            <button onClick={() => onDelete(task.id)}>Delete</button>
+          <Item
+            key={task.id}
+            variant="outline"
+            className="flex justify-between"
+          >
+            <div className="flex gap-2 items-center">
+              <input
+                type="checkbox"
+                checked={task.isCompleted}
+                onChange={() => {
+                  onComplete(task.id);
+                }}
+              />
+              <p className="text-lg">{task.description}</p>
+            </div>
+
+            <Button
+              variant="destructive"
+              size="icon"
+              onClick={() => onDelete(task.id)}
+            >
+              <TrashIcon />
+            </Button>
           </Item>
         );
       })}
