@@ -29,8 +29,8 @@ function App() {
     setTasks(newList);
   };
   return (
-    <div>
-      <h1>Task Tracker</h1>
+    <div className="mx-auto max-w-fit">
+      <h1 className="text-2xl">Task Tracker</h1>
       <TaskForm onSubmitForm={handleSubmitForm} />
       <TaskList
         tasks={tasks}

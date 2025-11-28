@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { useState } from "react";
 
 interface TaskFormProps {
@@ -13,12 +15,14 @@ const TaskForm = ({ onSubmitForm }: TaskFormProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmitForm}>
-      <input
+    <form onSubmit={handleSubmitForm} className="flex gap-2 my-2">
+      <Input
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       />
-      <button>Submit</button>
+      <Button type="submit" variant="outline">
+        Submit
+      </Button>
     </form>
   );
 };

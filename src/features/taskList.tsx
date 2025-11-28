@@ -1,3 +1,4 @@
+import { Item } from "@/components/ui/item";
 import type { Task } from "../models/Task";
 
 interface TaskListProps {
@@ -12,10 +13,10 @@ const TaskList = ({ tasks, onDelete, onComplete }: TaskListProps) => {
   }
 
   return (
-    <div>
+    <div className="flex flex-col gap-2">
       {tasks.map((task) => {
         return (
-          <div key={task.id}>
+          <Item key={task.id} variant="outline">
             <input
               type="checkbox"
               checked={task.isCompleted}
@@ -25,7 +26,7 @@ const TaskList = ({ tasks, onDelete, onComplete }: TaskListProps) => {
             />
             <p>{task.description}</p>
             <button onClick={() => onDelete(task.id)}>Delete</button>
-          </div>
+          </Item>
         );
       })}
     </div>
